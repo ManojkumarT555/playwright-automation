@@ -14,4 +14,13 @@ test('login test', async ({ page }) => {
 
   await expect(page).toHaveURL(/inventory/);
   await expect(page.locator('.inventory_list')).toBeVisible();
+
+  //Click the product 
+  await expect(page.getByText("Sauce Labs Backpack")).toBeVisible();
+  await page.getByText("Sauce Labs Backpack").click();
+
+  //Clicking the Add to cart button
+  await expect(page.locator(".inventory_details_name")).toHaveText("Sauce Labs Backpack");
+  await page.locator("#add-to-cart").click();
+  
 });
