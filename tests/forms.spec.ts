@@ -59,3 +59,14 @@ test("Handling dates", async ({ page }) => {
 //   await page.locator('.ui-datepicker-year').selectOption('2025');
 //   await page.locator("//a[text()='15']").click();
 });
+
+
+test("Handling Uploading Files",async({page})=>{
+
+    //"C:\Users\manoj\Downloads\customers.csv"
+    await page.goto("https://testautomationpractice.blogspot.com/#");
+
+    await expect(page).toHaveURL(/testautomationpractice/);
+    await page.setInputFiles("#singleFileInput","/README.md");
+
+})
