@@ -40,3 +40,22 @@ test("Dropdown and dynamic dropdowns",async({page})=>{
     await expect(page.getByText("Colors:")).toBeVisible();
     await page.locator("#colors").selectOption(["red","blue","green"]);
 })
+
+
+test("Handling dates", async ({ page }) => {
+  await page.goto("https://testautomationpractice.blogspot.com/");
+
+  await expect(page).toHaveURL(/testautomationpractice/);
+  // ✅ Datepicker 1 
+  await page.locator("#datepicker").fill('04/20/2026');
+  // ✅ Datepicker 2 
+  await page.locator("#txtDate").click();
+  await page.locator(".ui-datepicker-month").selectOption({ label: "Apr" });
+  await page.locator(".ui-datepicker-year").selectOption("2026");
+  await page.locator("//a[text()='20']").click();
+  // Datepicker 3
+//   await page.locator('#start-date').click();
+//   await page.locator('.ui-datepicker-month').selectOption('Aug');
+//   await page.locator('.ui-datepicker-year').selectOption('2025');
+//   await page.locator("//a[text()='15']").click();
+});
