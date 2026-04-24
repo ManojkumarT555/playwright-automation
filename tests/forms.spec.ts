@@ -67,6 +67,12 @@ test("Handling Uploading Files",async({page})=>{
     await page.goto("https://testautomationpractice.blogspot.com/#");
 
     await expect(page).toHaveURL(/testautomationpractice/);
-    await page.setInputFiles("#singleFileInput","/README.md");
+    await page.setInputFiles("#singleFileInput","C:/Users/manoj/OneDrive/Pictures/Documents/OneNote Notebooks/My Notebook/Open Notebook.onetoc2");
+    await page.getByRole('button',{name:"Upload Single File"}).click();
+    await expect(page.locator("#singleFileStatus")).toBeVisible();
 
+    await page.setInputFiles("#multipleFilesInput",["C:/Users/manoj/OneDrive/Pictures/Documents/OneNote Notebooks/My Notebook/Open Notebook.onetoc2","C:/Users/manoj/OneDrive/Pictures/Documents/OneNote Notebooks/My Notebook/Quick Notes.one"]);
+    await page.getByRole('button',{name:"Upload Multiple Files"}).click();
+    await expect(page.locator("#multipleFilesStatus")).toBeVisible();
+    
 })
